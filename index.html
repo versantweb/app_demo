@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+
+	<script src="components/jquery/dist/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div data-role="page">
+
+	<div data-role="panel" class="nav-menu" id="nav-menu" data-display="push"></div>
+
+	<div data-role="header">
+		<h1>Ma première app</h1>
+    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		Voici ma première application Phonegap
+		<div class="yes">
+			<i class="fa fa-angellist"></i>
+		</div>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<script>
+	// charge le menu
+  $(document).on("pageshow", function(){
+  	$(".nav-menu").load("menu.html", function(){
+  		$(".nav-menu").trigger( "updatelayout" );
+  	});
+	});
+</script>
+
+</body>
+</html>

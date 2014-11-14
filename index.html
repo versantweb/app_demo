@@ -38,15 +38,21 @@
 	<script>
 		// récupert le programme TV
 		var programmetv = JSON.parse(localStorage.getItem("programmetv"));
+
+		// récupert la date du jour
+		var date = new Date();
+		date = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 		
-		if (programmetv != undefined && programmetv != null){
-			alert('yes');
-			// affiche les chaînes
-			affiche_chaines(programmetv, $('#chaines'));
+		// si le programme du jour a déjà été récupéré
+		if (programmetv != undefined && programmetv != null && programmetv.date == date){
+			// on affiche les chaînes
+			affiche_chaines(programmetv.programme, $('#chaines'));
 		}
+		// si pas encore récupéré
 		else{
-			alert('no');
+			// on le récupert
 			$(document).ready(function(){
+				// on affiche un loader
 				$.mobile.loading( "show", {
 					text: "Chargement du programme TV",
 					textVisible: true,
@@ -55,17 +61,21 @@
 					html: ""
 		    });
 
-				// var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
-				var rss = "programme-local.xml";
+				var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
+				// var rss = "programme-local.xml";
 
 				// charge le programme TV
 				get_rss(rss, function(data){
-					// et le stock
-					programmetv = data;
+					// et le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
+					var programmetv = {
+						date: date,
+						programme: data
+					}
+
 					localStorage.setItem("programmetv", JSON.stringify(programmetv));
 
 					// affiche les chaînes
-					affiche_chaines(programmetv, $('#chaines'));
+					affiche_chaines(programmetv.programme, $('#chaines'));
 
 					// raffraichit la liste
   				$('#chaines').listview("refresh");
@@ -118,7 +128,7 @@
   $(document).on("pageshow", function(){
   	$(".nav-menu").load("menu.html", function(){
 			$(".nav-menu").panel();
-  		$(".nav-menu").trigger( "updatelayout" );
+  		$(".nav-menu").trigger("updatelayout");
   	});
 	});
 </script>

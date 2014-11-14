@@ -61,14 +61,45 @@ function get_rss(rss, success){
     // appelle la fonction de callback avec en paramètre les chaînes trouvées    
     success(chaines);
   });
+}
 
+
+
+// affiche les chaînes et les programmes dans un élément "$element" donné
+function affiche_chaines(programmetv, $element){
+  // vérifie si l'élément donné existe dans le DOM
+  if ($element.length == 0){
+    return false;
+  }
+
+  // ajoute les chaînes
+  $.each(programmetv, function(index, chaine){
+    $element.append("<li><a href='#' data-chaineindex='" + index + "' class='chaine'>" + chaine.nom + "</a></li>");
+  });
+
+  // lors d'un clic sur une chaîne, on affiche le programme de cette chaîne
+  $('#chaines .chaine').on('click', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    // récupert le programme de la chaîne
+    var index = $(this).data('chaineindex');
+    var ch = programmetv[index];
+
+    // affiche le nom de la chaîne
+    $('#page_chaine_programme .titre_chaine').html(ch.nom);
+    $('#page_chaine_programme .programme_chaine').empty();
+
+    // puis insère chacun des programmes
+    $.each(ch.programme, function(index, programme){
+      $contenu = $('<div class="programme"><div class="ui-corner-all custom-corners"><div class="ui-bar ui-bar-a"><h3>' + programme.heure + ' - ' + programme.titre + '</h3></div><div class="ui-body ui-body-a"><p>' + programme.description + '</p></div></div></div>');
+      $('#page_chaine_programme .programme_chaine').append($contenu);
+    });
+
+    document.location = '#page_chaine_programme';
+  });
 }
 
 
 
 $(document).on("pageshow", setRealContentHeight);
-
-
-
-// var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
-var rss = "programme-local.xml";

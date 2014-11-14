@@ -102,4 +102,16 @@ function affiche_chaines(programmetv, $element){
 
 
 
+// met la page en 100% de haut
 $(document).on("pageshow", setRealContentHeight);
+
+
+
+// pour permettre d'ouvrir le menu lors d'un event "onswipe"
+$(document).on("pagecreate", function(){
+  $(document).on("swiperight", function(e){
+    if ( $(".ui-page-active").jqmData("panel") !== "open"){
+      $(".nav-menu").panel("open");
+    }
+  });
+});

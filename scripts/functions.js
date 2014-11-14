@@ -33,7 +33,7 @@ function get_rss(rss, success){
       var el = $(this);
 
       // sépare les éléments du titre
-      temp = el.find("title").text().split(" | ");
+      temp = el.find("title").text().replace("<![CDATA[", "").replace("]]>", "").split(" | ");
 
       // récupert la chaine
       chaine = temp[0].trim();

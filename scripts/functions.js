@@ -109,7 +109,7 @@ $(document).on("pageshow", setRealContentHeight);
 
 // pour permettre d'ouvrir le menu lors d'un event "onswipe"
 $(document).on("pagecreate", function(){
-  $(document).on("swiperight", function(e){
+  $(document).on("swipeleft swiperight", function(e){
     if ( $(".ui-page-active").jqmData("panel") !== "open"){
       $(".nav-menu").panel("open");
     }

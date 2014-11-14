@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+
+	<script src="components/jquery/dist/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="css/style.css" />
+
+	<script src="scripts/functions.js"></script>
+
+	<script>
+		// récupert le programme TV
+		var programmetv = JSON.parse(localStorage.getItem("programmetv"));
+		
+		if (programmetv != null){
+			alert('yes');
+		}
+		else{
+			alert('no');
+		}
+		
+	// 	$( document ).on( "click", ".show-page-loading-msg", function() {	    
+	// 		$.mobile.loading( "show", {
+	// 			text: "Chargement du programme TV",
+	// 			textVisible: true,
+	// 			theme: 'b',
+	// 			textonly: false,
+	// 			html: ""
+	//     });
+	// 	});
+
+	// 	// var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
+	// 	var rss = "programme-local.xml";
+
+	// 	// charge le programme TV
+	// 	get_rss(rss, function(data){
+	// 		// et le stock
+	// 		localStorage.setItem("programmetv", JSON.stringify(data));
+
+	// 		// puis affiche la page affichant les chaînes
+	// 		document.location = "chaines.html";
+	// 	});
+
+	// 	$.mobile.loading( "hide" );
+	</script>
+</head>
+<body>
+
+<div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
+
+<!-- page listant les chaines -->
+<div data-role="page" id="page_chaines">
+	
+	<div data-role="header">
+		<h1>Liste des chaînes TV</h1>
+    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<!-- pour la liste des chaînes -->
+		<ul id="chaines" data-role="listview" data-filter="true" data-filter-placeholder="Rechercher une chaîne..." data-inset="true"></ul>
+	</div>
+
+	<script>
+		// affiche les chaînes
+		$.each(programmetv, function(index, chaine){
+			$('#chaines').append("<li data-chaineindex='" + index + "' class='chaine'>" + chaine.nom + "</li>");
+		});
+
+		$('#chaines').on('click', '.chaine', function(event){
+			
+			var index = $(this).data('chaineindex');
+			var ch = programmetv[index];
+
+			$('#page_chaine_programme .titre_chaine').html("Programme " + ch.nom);
+			$('#page_chaine_programme .programme_chaine').empty();
+
+			$.each(ch.programme, function(index, programme){
+				$contenu = $('<div class="programme"><div class="ui-corner-all custom-corners"><div class="ui-bar ui-bar-a"><h3>' + programme.heure + ' - ' + programme.titre + '</h3></div><div class="ui-body ui-body-a"><p>' + programme.description + '</p></div></div></div>');
+				
+				$('#page_chaine_programme .programme_chaine').append($contenu);
+			});
+
+			document.location = '#page_chaine_programme';
+		});
+	</script>
+</div>
+<!-- fin page listant les chaines -->
+
+
+
+<!-- page détails d'une chaîne -->
+<div data-role="page" id="page_chaine_programme">
+
+	<!-- <div data-role="panel" class="nav-menu" id="nav-menu" data-display="push"></div> -->
+	
+	<div data-role="header">
+		<h1 class="titre_chaine"></h1>
+    <a href="#page_chaines" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<div class="programme_chaine"></div>
+	</div>
+</div>
+<!-- fin page détails d'une chaîne -->
+
+
+
+<!-- page A propos -->
+<div data-role="page" id="page_a_propos">
+
+	<!-- <div data-role="panel" class="nav-menu" id="nav-menu" data-display="push"></div> -->
+	
+	<div data-role="header">
+		<h1>A propos</h1>
+    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		Information à propos de l'application
+		<br><br>
+		Cette application a été dévelopée par <a href="https://versantweb.ch" target="_blank">Versant Web Communication</a> dans un but éducatif.
+	</div>
+</div>
+<!-- fin page A propos -->
+
+
+
+<script>
+	// charge le menu
+  $(document).on("pageshow", function(){
+  	$(".nav-menu").load("menu.html", function(){
+			$(".nav-menu").panel();
+  		$(".nav-menu").trigger( "updatelayout" );
+  	});
+	});
+</script>
+
+</body>
+</html>

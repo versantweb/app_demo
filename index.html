@@ -11,41 +11,51 @@
 	<link rel="stylesheet" href="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
 	<script src="components/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-	<link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css" />
-
 	<link rel="stylesheet" href="css/style.css" />
+
+	<script src="scripts/functions.js"></script>
 </head>
 <body>
 
-<div data-role="page">
+<!-- page d'accueil -->
+<div data-role="page" id="accueil">
 
 	<div data-role="panel" class="nav-menu" id="nav-menu" data-display="push"></div>
 
 	<div data-role="header">
-		<h1>Ma première app</h1>
-    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
+		<h1>Chargement du programme TV</h1>
+    <!-- <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a> -->
 	</div><!-- /header -->
 
-	<div role="main" class="ui-content">
-		Voici ma première application Phonegap
-		<div class="yes">
-			<i class="fa fa-angellist"></i>
+	<div role="main" class="ui-content">	
+		<div id="bowlG">
+			<div id="bowl_ringG">
+				<div class="ball_holderG">
+					<div class="ballG"></div>
+				</div>
+			</div>
 		</div>
 	</div><!-- /content -->
 
 	<div data-role="footer">
 		<h4></h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+	</div>
 
-<script>
-	// charge le menu
-  $(document).on("pageshow", function(){
-  	$(".nav-menu").load("menu.html", function(){
-  		$(".nav-menu").trigger( "updatelayout" );
-  	});
-	});
-</script>
+	<script>
+		// var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
+		var rss = "programme-local.xml";
+
+		// charge le programme TV
+		get_rss(rss, function(data){
+			// et le stock
+			localStorage.setItem("programmetv", JSON.stringify(data));
+
+			// puis affiche la page affichant les chaînes
+			document.location = "chaines.html";
+		});
+	</script>
+</div>
+<!-- fin page d'accueil -->
 
 </body>
 </html>

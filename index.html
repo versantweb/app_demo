@@ -17,24 +17,6 @@
 
 	<script src="scripts/functions.js"></script>
 
-</head>
-<body>
-
-<div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
-
-<!-- page listant les chaines -->
-<div data-role="page" id="page_chaines">
-	
-	<div data-role="header">
-		<h1>Liste des chaînes TV</h1>
-    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
-	</div>
-
-	<div role="main" class="ui-content">
-		<!-- pour la liste des chaînes -->
-		<ul id="chaines" data-role="listview" data-filter="true" data-filter-placeholder="Rechercher une chaîne..." data-inset="true"></ul>
-	</div>
-
 	<script>
 		// récupert le programme TV
 		var programmetv = JSON.parse(localStorage.getItem("programmetv"));
@@ -53,7 +35,33 @@
 		var year = date.getFullYear();
 
 		date = year + '-' + month + '-' + day;
-		
+
+
+		// définit le chemin vers le flux RSS du programme TV
+		var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
+		// var rss = "programme-local.xml";
+	</script>
+
+</head>
+<body>
+
+<div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
+
+<!-- page listant les chaines -->
+<div data-role="page" id="page_chaines">
+	
+	<div data-role="header">
+		<h1>Liste des chaînes TV</h1>
+    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh">refresh</button>
+	</div>
+
+	<div role="main" class="ui-content">
+		<!-- pour la liste des chaînes -->
+		<ul id="chaines" data-role="listview" data-filter="true" data-filter-placeholder="Rechercher une chaîne..." data-inset="true"></ul>
+	</div>
+
+	<script>		
 		// si le programme du jour a déjà été récupéré
 		if (programmetv != undefined && programmetv != null && programmetv.date == date){
 			// on affiche les chaînes
@@ -72,10 +80,6 @@
 					html: ""
 		    });
 
-				var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
-				console.log(rss);
-				var rss = "programme-local.xml";
-
 				// charge le programme TV
 				get_rss(rss, function(data){
 					// et le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
@@ -92,7 +96,7 @@
 					// raffraichit la liste
   				$('#chaines').listview("refresh");
 
-					// puis affiche la page affichant les chaînes
+					// puis on masque le loader
 					$.mobile.loading("hide");
 				});
 			});
@@ -142,6 +146,40 @@
 			$(".nav-menu").panel();
   		$(".nav-menu").trigger("updatelayout");
   	});
+	});
+
+
+
+  // pour raffraichir le programme TV
+	$(document).on("click", "button.refresh", function(){
+		// on affiche un loader
+		$.mobile.loading( "show", {
+			text: "Chargement du programme TV",
+			textVisible: true,
+			theme: 'b',
+			textonly: false,
+			html: ""
+    });
+
+		// charge le programme TV
+		get_rss(rss, function(data){
+			// le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
+			var programmetv = {
+				date: date,
+				programme: data
+			}
+
+			localStorage.setItem("programmetv", JSON.stringify(programmetv));
+
+			// affiche les chaînes
+			affiche_chaines(programmetv.programme, $('#chaines'));
+
+			// raffraichit la liste
+			$('#chaines').listview("refresh");
+
+			// puis on masque le loader
+			$.mobile.loading("hide");
+		});
 	});
 </script>
 

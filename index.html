@@ -41,7 +41,18 @@
 
 		// récupert la date du jour
 		var date = new Date();
-		date = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+
+		var day = date.getDate();
+		if (day.length == 1)
+			day = '0' + day;
+
+		var month = date.getMonth() + 1;
+		if (month.length == 1)
+			month = '0' + month;
+
+		var year = date.getFullYear();
+
+		date = year + '-' + month + '-' + day;
 		
 		// si le programme du jour a déjà été récupéré
 		if (programmetv != undefined && programmetv != null && programmetv.date == date){
@@ -61,8 +72,9 @@
 					html: ""
 		    });
 
-				var rss = "http://webnext.fr/epg_cache/programme-tv-rss_2014-11-03.xml";
-				// var rss = "programme-local.xml";
+				var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
+				console.log(rss);
+				var rss = "programme-local.xml";
 
 				// charge le programme TV
 				get_rss(rss, function(data){

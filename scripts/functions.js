@@ -116,6 +116,9 @@ $(document).on("pageinit", ".page_with_menu", function(){
 
   $(document).on("touchstart touchmove touchend touchcancel", ".page_with_menu", function(e){
     console.log('touch ' + e.type);
+    if (e.type === "touchcancel"){
+      $(this).trigger("touchend");
+    }
   });
 
   $(document).on("swipeleft swiperight", ".page_with_menu", function(e){

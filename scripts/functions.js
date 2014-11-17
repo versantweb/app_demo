@@ -106,12 +106,11 @@ function affiche_chaines(programmetv, $element){
 
 
 function init(){
-  alert('init');
   // met la page en 100% de haut
   $(document).on("pageshow", setRealContentHeight);
 
   $(document).on("deviceready", function(){
-    alert('ready');
+    // alert('ready');
   });
 
   // charge le menu
@@ -158,9 +157,7 @@ function init(){
       $.mobile.loading("hide");
 
       // vibre
-      log('vibrate');
       navigator.vibrate(1000);
-      log('vibrated');
     });
   });
 
@@ -173,8 +170,8 @@ function init(){
 
     var title = $(this).data('sharetitle');
     var text = $(this).data('sharetext');
-    log('share');
-    navigator.share(sharetext,sharetitle,"plain/text")
+    log('share : ' + title + ' / ' + text);
+    navigator.share(text,title)
     log('shared');
   });
 }

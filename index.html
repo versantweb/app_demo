@@ -51,24 +51,10 @@
 		var rss1 = "http://webnext.fr/programme-tv-rss";
 		// console.log(rss);
 		var rss = "programme-local.xml";
-
-
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-    	alert('ready2');
-    }
-
-		function onLoad() {
-			alert('load');
-      document.addEventListener("deviceready", onDeviceReady, false);
-    }
-
 	</script>
 
 </head>
-<body onload="onLoad()">
+<body>
 
 <div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
 
@@ -127,15 +113,14 @@
 
 						// puis on masque le loader
 						$.mobile.loading("hide");
+
+						// vibre
+      			navigator.vibrate(1000);
 					});
 				});
 
 			});
 		}
-
-		console.log('vibrate');
-		// navigator.notification.vibrate(1000);
-		console.log('vibrated');
 	</script>
 </div>
 <!-- fin page listant les chaines -->

@@ -9,13 +9,12 @@
 	<link rel="stylesheet" href="css/style.css" />
 
 	<script src="phonegap.js"></script>
-	<script src="vibration.js"></script>
 
 	<script>
     // device APIs are available
     //
     function onDeviceReady() {
-    	alert('ready');
+    	// alert('ready');
     }
 
 		function onLoad() {
@@ -35,13 +34,8 @@
 	<div data-role="header">
 		<h1>Liste des chaînes TV</h1>
     <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
-    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate([1000]);">refresh</button>
-	</div>
-
-	<div role="main" class="ui-content">
-		<div class="console" style="width: 100%; height: 200px; overflow-y: scroll;"></div>
-		<!-- pour la liste des chaînes -->
-		<ul id="chaines" data-role="listview" data-filter="true" data-filter-placeholder="Rechercher une chaîne..." data-inset="true"></ul>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate([1000]);">refresh</button><br><br>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate(1000);">refresh2</button>
 	</div>
 </div>
 <!-- fin page listant les chaines -->

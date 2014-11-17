@@ -42,10 +42,22 @@
 		var rss1 = "http://webnext.fr/programme-tv-rss";
 		// console.log(rss);
 		var rss = "programme-local.xml";
+
+
+
+		function onLoad() {
+      document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+    	alert('ready2');
+    }
 	</script>
 
 </head>
-<body>
+<body onload="onLoad()">
 
 <div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
 

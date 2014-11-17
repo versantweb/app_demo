@@ -107,25 +107,12 @@ $(document).on("pageshow", setRealContentHeight);
 
 
 
-$( document ).on( "pageinit", "#demo-page", function() {
-    $( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
-        // We check if there is no open panel on the page because otherwise
-        // a swipe to close the left panel would also open the right panel (and v.v.).
-        // We do this by checking the data that the framework stores on the page element (panel: open).
-        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-            if ( e.type === "swipeleft"  ) {
-                $( "#right-panel" ).panel( "open" );
-            } else if ( e.type === "swiperight" ) {
-                $( "#left-panel" ).panel( "open" );
-            }
-        }
-    });
-});
+
 
 
 // pour permettre d'ouvrir le menu lors d'un event "onswipe"
-$(document).on("pageinit", "#page_chaines", function(){
-  $(document).on("swipeleft swiperight", "#page_chaines", function(e){
+$(document).on("pageinit", ".page_with_menu", function(){
+  $(document).on("swipeleft swiperight", ".page_with_menu", function(e){
     // $(document).on("swipeleft", function(e){
       // if ( $(".ui-page-active").jqmData("panel") !== "open"){
         // $(".nav-menu").panel("close");

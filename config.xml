@@ -21,4 +21,10 @@
     
     <!-- pour permettre le téléchargement du programme TV -->
     <access origin="http://webnext.fr" subdomains="true" />
+    
+    <!-- plugin pour utiliser la vibration -->
+    <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
+    
+    <!-- plugin pour le partage social -->
+    <gap:plugin name="nl.madebymark.share" version="0.1.1" />
 </widget>

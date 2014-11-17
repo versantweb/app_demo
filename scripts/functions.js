@@ -45,8 +45,8 @@ function get_rss(rss, success){
         programmes_temp[index_chaine] = [];
       }
       // récupert la description et les commentaires (note)
-      description = el.find("description").text();
-      commentaires = el.find("comments").text();
+      description = el.find("description").text().replace("<![CDATA[", "").replace("]]>", "");
+      commentaires = el.find("comments").text().replace("<![CDATA[", "").replace("]]>", "");
 
       // prépare l'élément représentant le programme et l'ajoute à la liste des programmes de la chaîne
       programmes_temp[index_chaine].push({heure: temp[1], titre: temp[2], description: description, commentaires: commentaires});

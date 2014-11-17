@@ -17,41 +17,12 @@
 
 	<link rel="stylesheet" href="css/style.css" />
 
-	<script src="scripts/functions.js"></script>
-
-
 	<script>
-		// récupert le programme TV
-		var programmetv = JSON.parse(localStorage.getItem("programmetv"));
-
-		// récupert la date du jour
-		var date = new Date();
-
-		var day = date.getDate();
-		if (day.length == 1)
-			day = '0' + day;
-
-		var month = date.getMonth() + 1;
-		if (month.length == 1)
-			month = '0' + month;
-
-		var year = date.getFullYear();
-
-		date = year + '-' + month + '-' + day;
-
-
-		// définit le chemin vers le flux RSS du programme TV
-		var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
-		var rss1 = "http://webnext.fr/programme-tv-rss";
-		// console.log(rss);
-		var rss = "programme-local.xml";
-
-
-
     // device APIs are available
     //
     function onDeviceReady() {
     	alert('ready2');
+    	navigator.vibrate(1000);
     }
 
 		function onLoad() {
@@ -80,96 +51,8 @@
 		<!-- pour la liste des chaînes -->
 		<ul id="chaines" data-role="listview" data-filter="true" data-filter-placeholder="Rechercher une chaîne..." data-inset="true"></ul>
 	</div>
-
-	<script>		
-		// si le programme du jour a déjà été récupéré
-		if (programmetv != undefined && programmetv != null && programmetv.date == date){
-			// on affiche les chaînes
-			affiche_chaines(programmetv.programme, $('#chaines'));
-		}
-		// si pas encore récupéré
-		else{
-			// on le récupert
-			$(document).ready(function(){
-				// on affiche un loader
-				$.mobile.loading( "show", {
-					text: "Chargement du programme TV",
-					textVisible: true,
-					theme: 'b',
-					textonly: false,
-					html: ""
-		    });
-
-				// charge le programme TV
-				get_rss(rss1, function(data){
-					
-					// charge le programme TV
-					get_rss(rss, function(data){
-						// et le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
-						var programmetv = {
-							date: date,
-							programme: data
-						}
-
-						localStorage.setItem("programmetv", JSON.stringify(programmetv));
-
-						// affiche les chaînes
-						affiche_chaines(programmetv.programme, $('#chaines'));
-
-						// raffraichit la liste
-	  				$('#chaines').listview("refresh");
-
-						// puis on masque le loader
-						$.mobile.loading("hide");
-					});
-				});
-
-			});
-		}
-
-		console.log('vibrate');
-		// navigator.notification.vibrate(1000);
-		console.log('vibrated');
-	</script>
 </div>
 <!-- fin page listant les chaines -->
-
-
-
-<!-- page détails d'une chaîne -->
-<div data-role="page" id="page_chaine_programme" class="page_with_menu">
-	<div data-role="header">
-		<h1 class="titre_chaine"></h1>
-    <a href="#page_chaines" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
-	</div>
-
-	<div role="main" class="ui-content">
-		<div class="programme_chaine"></div>
-	</div>
-</div>
-<!-- fin page détails d'une chaîne -->
-
-
-
-<!-- page A propos -->
-<div data-role="page" id="page_a_propos" class="page_with_menu">
-	<div data-role="header">
-		<h1>A propos</h1>
-    <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
-	</div>
-
-	<div role="main" class="ui-content">
-		Information à propos de l'application
-		<br><br>
-		Cette application a été dévelopée par <a href="https://versantweb.ch" target="_blank">Versant Web Communication</a> dans un but éducatif.
-	</div>
-</div>
-<!-- fin page A propos -->
-
-
-<script>
-	init();
-</script>
 
 </body>
 </html>

@@ -113,7 +113,7 @@ $(document).on("pageshow", setRealContentHeight);
 // pour permettre d'ouvrir le menu lors d'un event "onswipe"
 $(document).on("pageinit", ".page_with_menu", function(){
   console.log('page init');
-  $(document).on("swipeleft swiperight", ".page_with_menu", function(e){
+  $(this).on("swipeleft swiperight", function(e){
     console.log('swipe ' + e.type);
     // $(document).on("swipeleft", function(e){
       // if ( $(".ui-page-active").jqmData("panel") !== "open"){

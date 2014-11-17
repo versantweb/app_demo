@@ -111,27 +111,32 @@ $(document).on("pageshow", setRealContentHeight);
 
 
 // pour permettre d'ouvrir le menu lors d'un event "onswipe"
-// $(document).on("pageinit", ".page_with_menu", function(){
-//   console.log('page init');
-//   $(this).on("swipeleft swiperight", function(e){
-//     console.log('swipe ' + e.type);
-//     // $(document).on("swipeleft", function(e){
-//       // if ( $(".ui-page-active").jqmData("panel") !== "open"){
-//         // $(".nav-menu").panel("close");
-//       // }
-//     // });
+$(document).on("pageinit", ".page_with_menu", function(){
+  console.log('page init');
 
-//     // $(document).on("swiperight", function(e){
-//       // if ( $(".ui-page-active").jqmData("panel") !== "open"){
-//         // $(".nav-menu").panel("open");
-//       // }
-//     // });
-//     if (e.type === "swipeleft"){
-//       $(".nav-menu").panel("close");
-//     } else if (e.type === "swiperight"){
-//       $(".nav-menu").panel("open");
-//     }
-//   });
-// });
+  $(document).on("touchstart touchmove touchend touchcancel", ".page_with_menu", function(e){
+    console.log('touch ' + e.type);
+  });
+
+  $(document).on("swipeleft swiperight", ".page_with_menu", function(e){
+    console.log('swipe ' + e.type);
+    // $(document).on("swipeleft", function(e){
+      // if ( $(".ui-page-active").jqmData("panel") !== "open"){
+        // $(".nav-menu").panel("close");
+      // }
+    // });
+
+    // $(document).on("swiperight", function(e){
+      // if ( $(".ui-page-active").jqmData("panel") !== "open"){
+        // $(".nav-menu").panel("open");
+      // }
+    // });
+    if (e.type === "swipeleft"){
+      $(".nav-menu").panel("close");
+    } else if (e.type === "swiperight"){
+      $(".nav-menu").panel("open");
+    }
+  });
+});
 
 

@@ -108,6 +108,10 @@
 
 			});
 		}
+
+		console.log('vibrate');
+		navigator.notification.vibrate(1000);
+		console.log('vibrated');
 	</script>
 </div>
 <!-- fin page listant les chaines -->
@@ -191,7 +195,9 @@
 			$.mobile.loading("hide");
 
 			// vibre
-  		navigator.vibrate(1000);
+			console.log('vibrate');
+  		navigator.vibrate([1000]);
+  		console.log('vibrated');
 		});
 	});
 
@@ -204,7 +210,9 @@
 
 		var title = $(this).data('sharetitle');
 		var text = $(this).data('sharetext');
+		console.log('share');
 		navigator.share(sharetext,sharetitle,"plain/text")
+		console.log('shared');
 	});
 </script>
 

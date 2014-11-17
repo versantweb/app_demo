@@ -77,9 +77,6 @@ function affiche_chaines(programmetv, $element){
     $element.append("<li><a href='#' data-chaineindex='" + index + "' class='chaine'>" + chaine.nom + "</a></li>");
   });
 
-  // vibre
-  // navigator.vibrate(1000);
-
   // lors d'un clic sur une chaîne, on affiche le programme de cette chaîne
   $('#chaines .chaine').on('click', function(event){
     event.stopPropagation();
@@ -95,7 +92,7 @@ function affiche_chaines(programmetv, $element){
 
     // puis insère chacun des programmes
     $.each(ch.programme, function(index, programme){
-      $contenu = $('<div class="programme"><div class="ui-corner-all custom-corners"><div class="ui-bar ui-bar-a"><h3>' + programme.heure + ' - ' + programme.titre + '</h3></div><div class="ui-body ui-body-a"><p>' + programme.description + '</p><div><a href="#" class="share" data-sharetitle="' + programme.titre + '" data-sharetext="' + programme.description + '"><i class="fa fa-share-alt" style="font-size: 2.5em; color: #000;"></i></a></div></div></div></div>');
+      $contenu = $('<div class="programme"><div class="ui-corner-all custom-corners"><div class="ui-bar ui-bar-a"><h3>' + programme.heure + ' - ' + programme.titre + '</h3></div><div class="ui-body ui-body-a"><p>' + programme.description + '</p></div></div></div>');
       $('#page_chaine_programme .programme_chaine').append($contenu);
     });
 
@@ -155,21 +152,6 @@ function init(){
 
       // puis on masque le loader
       $.mobile.loading("hide");
-
-      // vibre
-      navigator.vibrate(1000);
     });
-  });
-
-
-
-  // pour le partage des programmes Tv
-  $(document).on("click", ".share", function(event){
-    event.stopPropagation();
-    event.preventDefault();
-
-    var title = $(this).data('sharetitle');
-    var text = $(this).data('sharetext');
-    navigator.share(text,title)
   });
 }

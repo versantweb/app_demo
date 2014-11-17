@@ -106,6 +106,7 @@ function affiche_chaines(programmetv, $element){
 
 
 function init(){
+  alert('init');
   // met la page en 100% de haut
   $(document).on("pageshow", setRealContentHeight);
 

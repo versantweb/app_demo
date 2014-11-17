@@ -46,6 +46,7 @@
 
 
 		function onLoad() {
+			alert('load');
       document.addEventListener("deviceready", onDeviceReady, false);
     }
 
@@ -122,7 +123,7 @@
 		}
 
 		console.log('vibrate');
-		navigator.notification.vibrate(1000);
+		// navigator.notification.vibrate(1000);
 		console.log('vibrated');
 	</script>
 </div>

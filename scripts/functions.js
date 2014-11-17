@@ -121,7 +121,7 @@ $(document).on("pageinit", ".page_with_menu", function(){
     }
   });
 
-  $(document).on("swipeLeft swipeRight", ".page_with_menu", function(e){
+  $(document).on("swipeLeft swipeRight swipeleft swiperight", ".page_with_menu", function(e){
     console.log('swipe ' + e.type);
     // $(document).on("swipeleft", function(e){
       // if ( $(".ui-page-active").jqmData("panel") !== "open"){

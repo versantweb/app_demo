@@ -34,8 +34,10 @@
 	<div data-role="header">
 		<h1>Liste des chaînes TV</h1>
     <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
-    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate([1000]);">refresh</button><br><br>
-    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate(1000);">refresh2</button>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate([1000]);">vibrate1</button><br><br>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate(1000);">vibrate2</button><br><br>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.notification.alert('PhoneGap Alert', null, 'Title', 'Button');">alert</button><br><br>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.notification.vibrate(2000);">vibrate3</button>
 	</div>
 </div>
 <!-- fin page listant les chaines -->

@@ -109,9 +109,15 @@ $(document).on("pageshow", setRealContentHeight);
 
 // pour permettre d'ouvrir le menu lors d'un event "onswipe"
 $(document).on("pagecreate", function(){
-  $(document).on("swipeleft swiperight", function(e){
-    if ( $(".ui-page-active").jqmData("panel") !== "open"){
+  $(document).on("swipeleft", function(e){
+    // if ( $(".ui-page-active").jqmData("panel") !== "open"){
+      $(".nav-menu").panel("close");
+    // }
+  });
+
+  $(document).on("swiperight", function(e){
+    // if ( $(".ui-page-active").jqmData("panel") !== "open"){
       $(".nav-menu").panel("open");
-    }
+    // }
   });
 });

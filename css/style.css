@@ -1,5 +1,6 @@
 .ui-content {
-  text-align: center; }
+  text-align: center;
+  -webkit-overflow-scrolling: touch; }
   .ui-content .yes {
     margin-top: 50px;
     font-size: 10em; }

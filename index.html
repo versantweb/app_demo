@@ -194,6 +194,18 @@
   		navigator.vibrate(1000);
 		});
 	});
+
+
+
+	// pour le partage des programmes Tv
+	$(document).on("click", ".share", function(event){
+		event.stopPropagation();
+    event.preventDefault();
+
+		var title = $(this).data('sharetitle');
+		var text = $(this).data('sharetext');
+		navigator.share(sharetext,sharetitle,"plain/text")
+	});
 </script>
 
 </body>

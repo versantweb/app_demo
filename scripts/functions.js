@@ -78,7 +78,7 @@ function affiche_chaines(programmetv, $element){
   });
 
   // vibre
-  navigator.vibrate(1000);
+  // navigator.vibrate(1000);
 
   // lors d'un clic sur une chaîne, on affiche le programme de cette chaîne
   $('#chaines .chaine').on('click', function(event){

@@ -15,12 +15,10 @@
     // device APIs are available
     //
     function onDeviceReady() {
-    	alert('ready2');
-    	navigator.vibrate(1000);
+    	alert('ready');
     }
 
 		function onLoad() {
-			alert('load');
       document.addEventListener("deviceready", onDeviceReady, false);
     }
 
@@ -37,7 +35,7 @@
 	<div data-role="header">
 		<h1>Liste des chaînes TV</h1>
     <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>
-    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh">refresh</button>
+    <button class="ui-btn ui-btn-right ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-refresh refresh" onclick="navigator.vibrate([1000]);">refresh</button>
 	</div>
 
 	<div role="main" class="ui-content">

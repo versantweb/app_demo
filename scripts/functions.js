@@ -158,9 +158,9 @@ function init(){
       $.mobile.loading("hide");
 
       // vibre
-      console.log('vibrate');
-      navigator.vibrate([1000]);
-      console.log('vibrated');
+      log('vibrate');
+      navigator.vibrate(1000);
+      log('vibrated');
     });
   });
 
@@ -173,8 +173,13 @@ function init(){
 
     var title = $(this).data('sharetitle');
     var text = $(this).data('sharetext');
-    console.log('share');
+    log('share');
     navigator.share(sharetext,sharetitle,"plain/text")
-    console.log('shared');
+    log('shared');
   });
+}
+
+
+function log(text){
+  $('.console').append("<div>" + text + "</div>");
 }

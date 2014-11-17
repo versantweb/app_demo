@@ -22,4 +22,6 @@
     <!-- pour permettre le téléchargement du programme TV -->
     <access origin="http://webnext.fr" subdomains="true" />
 
+    <gap:plugin name="org.apache.cordova.vibration" />
+
 </widget>

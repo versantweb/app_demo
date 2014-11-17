@@ -77,6 +77,9 @@ function affiche_chaines(programmetv, $element){
     $element.append("<li><a href='#' data-chaineindex='" + index + "' class='chaine'>" + chaine.nom + "</a></li>");
   });
 
+  // vibre
+  navigator.vibrate(1000);
+
   // lors d'un clic sur une chaîne, on affiche le programme de cette chaîne
   $('#chaines .chaine').on('click', function(event){
     event.stopPropagation();
@@ -104,42 +107,3 @@ function affiche_chaines(programmetv, $element){
 
 // met la page en 100% de haut
 $(document).on("pageshow", setRealContentHeight);
-
-
-
-
-
-
-// pour permettre d'ouvrir le menu lors d'un event "onswipe"
-$(document).on("pageinit", ".page_with_menu", function(){
-  console.log('page init');
-
-  $(document).on("touchstart touchmove touchend touchcancel", ".page_with_menu", function(e){
-    console.log('touch ' + e.type);
-    if (e.type === "touchcancel"){
-      $(this).trigger("touchend");
-    }
-  });
-
-  $(document).on("swipeLeft swipeRight swipeleft swiperight", ".page_with_menu", function(e){
-    console.log('swipe ' + e.type);
-    // $(document).on("swipeleft", function(e){
-      // if ( $(".ui-page-active").jqmData("panel") !== "open"){
-        // $(".nav-menu").panel("close");
-      // }
-    // });
-
-    // $(document).on("swiperight", function(e){
-      // if ( $(".ui-page-active").jqmData("panel") !== "open"){
-        // $(".nav-menu").panel("open");
-      // }
-    // });
-    if (e.type === "swipeLeft"){
-      $(".nav-menu").panel("close");
-    } else if (e.type === "swipeRight"){
-      $(".nav-menu").panel("open");
-    }
-  });
-});
-
-

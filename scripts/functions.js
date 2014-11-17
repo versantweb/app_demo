@@ -170,13 +170,6 @@ function init(){
 
     var title = $(this).data('sharetitle');
     var text = $(this).data('sharetext');
-    log('share : ' + title + ' / ' + text);
     navigator.share(text,title)
-    log('shared');
   });
-}
-
-
-function log(text){
-  $('.console').append("<div>" + text + "</div>");
 }

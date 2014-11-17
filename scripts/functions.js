@@ -102,3 +102,78 @@ function affiche_chaines(programmetv, $element){
     document.location = '#page_chaine_programme';
   });
 }
+
+
+
+function init(){
+  // met la page en 100% de haut
+  $(document).on("pageshow", setRealContentHeight);
+
+  $(document).on("deviceready", function(){
+    alert('ready');
+  });
+
+  // charge le menu
+  $(document).on("pageshow", function(){
+    $(".nav-menu").load("menu.html", function(){
+      $(".nav-menu").panel();
+      $(".nav-menu").trigger("updatelayout");
+    });
+  });
+
+
+
+  // pour raffraichir le programme TV
+  $(document).on("click", "button.refresh", function(){
+    // on affiche un loader
+    $.mobile.loading( "show", {
+      text: "Chargement du programme TV",
+      textVisible: true,
+      theme: 'b',
+      textonly: false,
+      html: ""
+    });
+
+    // charge le programme TV
+    get_rss(rss, function(data){
+      // le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
+      var programmetv = {
+        date: date,
+        programme: data
+      }
+
+      localStorage.setItem("programmetv", JSON.stringify(programmetv));
+
+      // vide les chaînes
+      $('#chaines').empty();
+
+      // affiche les chaînes
+      affiche_chaines(programmetv.programme, $('#chaines'));
+
+      // raffraichit la liste
+      $('#chaines').listview("refresh");
+
+      // puis on masque le loader
+      $.mobile.loading("hide");
+
+      // vibre
+      console.log('vibrate');
+      navigator.vibrate([1000]);
+      console.log('vibrated');
+    });
+  });
+
+
+
+  // pour le partage des programmes Tv
+  $(document).on("click", ".share", function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var title = $(this).data('sharetitle');
+    var text = $(this).data('sharetext');
+    console.log('share');
+    navigator.share(sharetext,sharetitle,"plain/text")
+    console.log('shared');
+  });
+}

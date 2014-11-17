@@ -121,7 +121,7 @@ $(document).on("pageinit", ".page_with_menu", function(){
     }
   });
 
-  $(document).on("swipeleft swiperight", ".page_with_menu", function(e){
+  $(document).on("swipeLeft swipeRight", ".page_with_menu", function(e){
     console.log('swipe ' + e.type);
     // $(document).on("swipeleft", function(e){
       // if ( $(".ui-page-active").jqmData("panel") !== "open"){
@@ -134,9 +134,9 @@ $(document).on("pageinit", ".page_with_menu", function(){
         // $(".nav-menu").panel("open");
       // }
     // });
-    if (e.type === "swipeleft"){
+    if (e.type === "swipeLeft"){
       $(".nav-menu").panel("close");
-    } else if (e.type === "swiperight"){
+    } else if (e.type === "swipeRight"){
       $(".nav-menu").panel("open");
     }
   });

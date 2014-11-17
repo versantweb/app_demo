@@ -16,6 +16,9 @@
 	<link rel="stylesheet" href="css/style.css" />
 
 	<script src="scripts/functions.js"></script>
+	
+	<!-- pour les swipe sur Android -->
+	<script src="scripts/_ezswipe.js"></script>
 
 	<script>
 		// récupert le programme TV
@@ -50,7 +53,7 @@
 <div data-role="panel" class="nav-menu" id="nav-menu" data-display="push" data-theme="a"></div>
 
 <!-- page listant les chaines -->
-<div data-role="page" id="page_chaines" class="page_with_menu">
+<div data-role="page" id="page_chaines" class="page_with_menu _ezswipe">
 	
 	<div data-role="header">
 		<h1>Liste des chaînes TV</h1>
@@ -115,7 +118,7 @@
 
 
 <!-- page détails d'une chaîne -->
-<div data-role="page" id="page_chaine_programme" class="page_with_menu">
+<div data-role="page" id="page_chaine_programme" class="page_with_menu _ezswipe">
 	<div data-role="header">
 		<h1 class="titre_chaine"></h1>
     <a href="#page_chaines" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
@@ -130,7 +133,7 @@
 
 
 <!-- page A propos -->
-<div data-role="page" id="page_a_propos" class="page_with_menu">
+<div data-role="page" id="page_a_propos" class="page_with_menu _ezswipe">
 	<div data-role="header">
 		<h1>A propos</h1>
     <a href="#nav-menu" data-icon="bars" data-iconpos="notext">Menu</a>

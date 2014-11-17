@@ -41,7 +41,7 @@
 		var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
 		var rss1 = "http://webnext.fr/programme-tv-rss";
 		// console.log(rss);
-		// var rss = "programme-local.xml";
+		var rss = "programme-local.xml";
 	</script>
 
 </head>
@@ -177,6 +177,9 @@
 			}
 
 			localStorage.setItem("programmetv", JSON.stringify(programmetv));
+
+			// vide les chaînes
+			$('#chaines').empty();
 
 			// affiche les chaînes
 			affiche_chaines(programmetv.programme, $('#chaines'));

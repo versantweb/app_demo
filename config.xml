@@ -22,10 +22,6 @@
     <!-- pour permettre le téléchargement du programme TV -->
     <access origin="http://webnext.fr" subdomains="true" />
 
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.Notification" />
-    </feature>
-
     <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
     
     <!-- plugin pour utiliser la vibration -->

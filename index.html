@@ -39,6 +39,8 @@
 
 		// définit le chemin vers le flux RSS du programme TV
 		var rss = "http://webnext.fr/epg_cache/programme-tv-rss_" + date + ".xml";
+		var rss1 = "http://webnext.fr/programme-tv-rss";
+		// console.log(rss);
 		// var rss = "programme-local.xml";
 	</script>
 
@@ -81,24 +83,29 @@
 		    });
 
 				// charge le programme TV
-				get_rss(rss, function(data){
-					// et le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
-					var programmetv = {
-						date: date,
-						programme: data
-					}
+				get_rss(rss1, function(data){
+					
+					// charge le programme TV
+					get_rss(rss, function(data){
+						// et le stock (avec la date pour vérifier ensuite qu'on a bien le programme du jour)
+						var programmetv = {
+							date: date,
+							programme: data
+						}
 
-					localStorage.setItem("programmetv", JSON.stringify(programmetv));
+						localStorage.setItem("programmetv", JSON.stringify(programmetv));
 
-					// affiche les chaînes
-					affiche_chaines(programmetv.programme, $('#chaines'));
+						// affiche les chaînes
+						affiche_chaines(programmetv.programme, $('#chaines'));
 
-					// raffraichit la liste
-  				$('#chaines').listview("refresh");
+						// raffraichit la liste
+	  				$('#chaines').listview("refresh");
 
-					// puis on masque le loader
-					$.mobile.loading("hide");
+						// puis on masque le loader
+						$.mobile.loading("hide");
+					});
 				});
+
 			});
 		}
 	</script>

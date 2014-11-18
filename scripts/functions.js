@@ -105,12 +105,24 @@ function affiche_chaines(programmetv, $element){
 
 
 
+function loadStylesheet(url){
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = url;
+  $('head').append(link);
+}
+
+
+
 function init(){
   // met la page en 100% de haut
   $(document).on("pageshow", setRealContentHeight);
 
   $(document).on("deviceready", function(){
-    // alert('ready');
+    var platform = device.platform;
+    if (platform == 'iOS'){
+      loadStylesheet("css/ios.css");
+    }
   });
 
   // charge le menu

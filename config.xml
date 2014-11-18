@@ -27,6 +27,9 @@
     
     <!-- plugin pour le partage social -->
     <gap:plugin name="nl.madebymark.share" version="0.1.1" />
+    
+    <!-- plugin pour récupérer les informations du téléphone -->
+    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
 
     
 

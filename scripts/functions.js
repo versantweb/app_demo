@@ -120,6 +120,7 @@ function init(){
 
   $(document).on("deviceready", function(){
     var platform = device.platform;
+    alert(platform);
     if (platform == 'iOS'){
       loadStylesheet("css/ios.css");
     }

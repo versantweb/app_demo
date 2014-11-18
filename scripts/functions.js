@@ -118,10 +118,11 @@ function init(){
   // met la page en 100% de haut
   $(document).on("pageshow", setRealContentHeight);
 
+  // lorsque le périphérique est prêt
   $(document).on("deviceready", function(){
-    alert('ready');
+    // on vérifie sur quelle plateforme on est
     var platform = device.platform;
-    alert(platform);
+    // si on est sur iOS, on charge une feuille de style spéciale pour iOS
     if (platform == 'iOS'){
       loadStylesheet("css/ios.css");
     }

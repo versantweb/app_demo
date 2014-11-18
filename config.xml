@@ -30,7 +30,11 @@
 
     
 
-    <!-- icons iOS -->
+    <!-- icône par défaut -->
+    <icon src="icon.png" />
+
+
+    <!-- icônes iOS -->
     
     <!-- iPhone / iPod Touch  -->
     <icon src="medias/icons/ios/icon-60.png" gap:platform="ios" width="60" height="60" />
@@ -49,7 +53,7 @@
     <icon src="medias/icons/ios/icon-40@2x.png" gap:platform="ios" width="80" height="80" />
 
 
-    <!-- icons Android -->
+    <!-- icônes Android -->
 
     <!-- LDPI - 36 x 36 -->
     <icon src="medias/icons/android/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
@@ -71,7 +75,11 @@
 
 
 
-    <!-- Splashscreen iOS -->
+    <!-- Splash Screen par défaut -->
+    <gap:splash src="splash.png" />
+
+
+    <!-- Splash Screen iOS -->
 
     <!-- iPhone and iPod touch -->
     <gap:splash src="medias/splashscreens/ios/Default-portrait~iphone.png" gap:platform="ios" width="320" height="480" />
@@ -89,7 +97,7 @@
     <gap:splash src="medias/splashscreens/ios/Default-Landscape@2x~ipad.png" gap:platform="ios" width="2048" height="1536" />
 
     
-    <!-- Splashscreen Android -->
+    <!-- Splash Screen Android -->
 
     <!-- LDPI - 240 x 320 -->
     <gap:splash src="medias/splashscreens/android/ldpi.9.png" gap:platform="android" gap:qualifier="ldpi" />

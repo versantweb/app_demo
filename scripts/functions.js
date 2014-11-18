@@ -119,6 +119,7 @@ function init(){
   $(document).on("pageshow", setRealContentHeight);
 
   $(document).on("deviceready", function(){
+    alert('ready');
     var platform = device.platform;
     alert(platform);
     if (platform == 'iOS'){

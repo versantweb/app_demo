@@ -27,4 +27,45 @@
     
     <!-- plugin pour le partage social -->
     <gap:plugin name="nl.madebymark.share" version="0.1.1" />
+
+    
+
+    <!-- icons iOS -->
+    
+    <!-- iPhone / iPod Touch  -->
+    <icon src="medias/icons/ios/icon-60.png" gap:platform="ios" width="60" height="60" />
+    <icon src="medias/icons/ios/icon-60@2x.png" gap:platform="ios" width="120" height="120" />
+
+    <!-- iPad -->
+    <icon src="medias/icons/ios/icon-76.png" gap:platform="ios" width="76" height="76" />
+    <icon src="medias/icons/ios/icon-76@2x.png" gap:platform="ios" width="152" height="152" />
+
+    <!-- Settings Icon -->
+    <icon src="medias/icons/ios/icon-small.png" gap:platform="ios" width="29" height="29" />
+    <icon src="medias/icons/ios/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
+
+    <!-- Spotlight Icon -->
+    <icon src="medias/icons/ios/icon-40.png" gap:platform="ios" width="40" height="40" />
+    <icon src="medias/icons/ios/icon-40@2x.png" gap:platform="ios" width="80" height="80" />
+
+
+    <!-- icons Android -->
+
+    <!-- LDPI - 36 x 36 -->
+    <icon src="medias/icons/android/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
+
+    <!-- MDPI - 48 x 48 -->
+    <icon src="medias/icons/android/mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
+
+    <!-- HDPI - 72 x 72 -->
+    <icon src="medias/icons/android/hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
+
+    <!-- XHDPI - 96 x 96 -->
+    <icon src="medias/icons/android/xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
+
+    <!-- XXHDPI - 144 x 144 -->
+    <icon src="medias/icons/android/xxhdpi.png" gap:platform="android" gap:qualifier="xxhdpi" />
+
+    <!-- XXXHDPI - 192 x 192 -->
+    <icon src="medias/icons/android/xxxhdpi.png" gap:platform="android" gap:qualifier="xxxhdpi" />
 </widget>

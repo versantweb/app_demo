@@ -22,7 +22,7 @@
 	<!-- Style de l'application -->
 	<link rel="stylesheet" href="css/style.css" />
 	
-	<!-- // Fonctions Javascript -->
+	<!-- Fonctions Javascript -->
 	<script src="scripts/functions.js"></script>
 
 
@@ -33,11 +33,11 @@
 		// récupert la date du jour
 		var date = new Date();
 
-		var day = date.getDate();
+		var day = date.getDate() + "";
 		if (day.length == 1)
 			day = '0' + day;
 
-		var month = date.getMonth() + 1;
+		var month = date.getMonth() + 1 + "";
 		if (month.length == 1)
 			month = '0' + month;
 
